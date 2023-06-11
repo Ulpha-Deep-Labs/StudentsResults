@@ -48,6 +48,21 @@ class Course(models.Model):
         super().save(*args, **kwargs)
 
 
+class CourseItem(models.Model):
+    course = models.ForeignKey(Course, related_name='course', on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, related_name='student', on_delete=models.CASCADE)
+    student_course_ca = models.IntegerField()
+    student_course_exam_score = models.IntegerField()
+    student_grade = models.CharField(max_length=1, blank=True)
 
+    def save(self, *args, **kwargs):
+        if self.student_course_ca + self.student_course_exam_score >=70:
+            self.student_grade = "A"
+        elif self.student_course_ca + self.student_course_exam_score >=69:
+            self.student_grade = "B"
+        elif self.student_course_ca + self.student_course_exam_score >=59:
+            self.student_grade ="C"
 
-
+        else:
+            self.grade = "D"
+        super().save(*args, **kwargs)
