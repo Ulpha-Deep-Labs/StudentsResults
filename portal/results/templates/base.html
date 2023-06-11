@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} Result Portal {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static "results/css/base.css" %}">
+  </head>
+
+  {% block content %}
+
+<body>
+
+{% if request.user.is_authenticated %}
+
+Hello {{ request.user.first_name|default:request.user.username }},
+        <a href="{% url "logout" %}">Logout</a>
+        {% else %}
+        <a href="{% url "login" %}">Log-in</a>
+        {% endif %}
+
+
+</body>
+
+ {% endblock content %}

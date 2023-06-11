@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Dashboard {% endblock %} {% block content %}
+<h1>Dashboard</h1>
+<p>Welcome to Dashboard
+     </p>
+
+{% if request.user.is_authenticated %}
+
+Hello {{ request.user.first_name|default:request.user.username }},
+        <a href="{% url "results:logout" %}">Logout</a>
+        {% else %}
+        <a href="{% url "login" %}">Log-in</a>
+        {% endif %}
+
+<br>
+<hr>
+<div class="cgpa">
+
+   CGPA:  <h4>{{ user.student.cgpa }}</h4>
+
+</div>
+
+
+<div class="cgpa">
+
+   GPA:  <h4>{{ user.student.gpa }}</h4>
+
+</div>
+
+<hr>
+<h4>{{ user.student.student_dept }}</h4>
+<h4>{{ user.student.student_sch}}</h4>
+
+
+{% endblock %}
