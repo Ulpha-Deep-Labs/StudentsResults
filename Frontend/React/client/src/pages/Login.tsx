@@ -1,15 +1,25 @@
+import { AcademicCapIcon } from "@heroicons/react/24/solid";
+import { img1 } from "../assets";
+import { Link } from "react-router-dom";
+
 const Login = () => {
 	return (
 		<div className="flex flex-col h-full">
-			<nav className="w-full bg-green-500 py-10">
-				<div className="flex max-w-6xl mx-auto">
+			<nav className="w-full bg-green-800 sm:py-10 py-5 px-4">
+				<div className="flex max-w-6xl mx-auto items-center gap-4">
+					<img src={img1} className="h-16" />{" "}
 					<h1 className="text-xl text-white font-semibold">
 						Federal University of Technology Owerri
 					</h1>
 				</div>
 			</nav>
-			<main className="w-full h-full flex justify-center items-center">
-				<form className="w-1/2 bg-white text-zinc-700 rounded-md shadow-xl p-10 flex flex-col gap-4">
+			<main className="w-full p-4 h-full flex flex-col  justify-around items-center text-zinc-700">
+				<h2 className="text-xl font-medium">FUTO Students Result Portal</h2>
+				<form className="w-full sm:w-1/2 bg-white rounded-md shadow-xl px-10 py-5 flex flex-col gap-4">
+					<div className="p-5 bg-green-800 rounded-full mx-auto w-max h-max ">
+						<AcademicCapIcon className="h-10 text-white" />
+					</div>
+					<p className="mx-auto my-2">Student Portal Login</p>
 					<input
 						type="text"
 						placeholder="Username"
@@ -22,12 +32,22 @@ const Login = () => {
 					/>
 					<button
 						type="submit"
-						className="bg-green-600 text-white w-full p-4 rounded"
+						className="bg-green-800 text-white text-lg font-medium w-full p-4 rounded"
 					>
 						Login
 					</button>
-
-                    <p></p>
+					<div className="flex flex-col">
+						<Link to="/" className="text-amber-600">
+							Forgot Password?
+						</Link>
+						<p>
+							New here?{" "}
+							<Link to="/" className="text-amber-600">
+								Verify your account
+							</Link>
+						</p>
+					</div>
+                    <p className="mx-auto text-sm text-zinc-500">Powered by Ulpha Deep Labs</p>
 				</form>
 			</main>
 		</div>
